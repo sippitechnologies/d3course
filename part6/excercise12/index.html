@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise 12</title>
+    <script src="js/d3_7.js"></script>
+</head>
+<body>
+    <script>
+    
+    let dataFile = "./data/assignment12.csv";
+    let body = ()=> d3.select("body");
+    let svg = ()=> {
+        return body().append("svg")
+                         .attr("width",700)
+                         .attr("height",700)
+                         .style('border','1px solid blue')
+    }
+    let values = d3.csv(dataFile,function(data){
+        return data;
+    });
+    let mySvg = svg();
+    values.then((value)=>{
+        value.forEach(element => {
+           switch(element.Shape)
+           {
+              case  "Rectangle":
+                 createRectangle(element,mySvg);
+               break;
+               case  "Circle":
+                  createCircle(element,mySvg);
+               break;
+               case  "Line":
+                 createLine(element,mySvg);
+               break;
+               case  "Ellipse":
+                  createEllipse(element,mySvg);
+               break;
+               case "Text":
+                   createText(element,mySvg);
+                   break;
+           }
+            
+        });
+    });
+
+    let createCircle=(value,svg)=>{
+        svg.append("circle")
+            .attr("cx",value.x)
+            .attr("cy",value.y)
+            .attr("r",value.r);
+           
+
+    };
+    let createText=(value,svg)=>{
+        svg.append("text")
+            .attr("x",value.x)
+            .attr("y",value.y)
+            .attr('stroke','#00000')
+            .attr("font-size","60")
+            .text(value.text);
+
+           
+           
+
+    };
+    let createRectangle=(value,svg)=>{
+        svg.append("rect")
+            .attr("height",value.Width)
+            .attr("width",value.Height)
+            .attr("x",value.x)
+            .attr("y",value.y)
+            .attr("fill","orange")
+            .style('border','1px solid blue')
+           
+
+    };
+    let createLine=(value,svg)=>{
+        svg.append("line")
+            .attr("x1",value.x1)
+            .attr("y1",value.y1)
+            .attr("x2",value.x2)
+            .attr("y2",value.y2)
+            .attr('stroke','blue');
+
+    };
+
+    let createEllipse=(value,svg)=>{
+        svg.append("ellipse")
+            .attr("cx",value.Width)
+            .attr('cy',value.Height)      
+            .attr('rx',value.x)
+            .attr('ry',value.y) 
+            .attr('fill',"red");   
+
+    };
+
+
+    
+    
+
+
+    </script>
+</body>
+</html>

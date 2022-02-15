@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/d3_7.js"></script>
+    <title>Shapes</title>
+</head>
+<body>
+    <script>
+      let svg=  d3.select("body")
+        .append("svg")
+        .attr("width",500)
+        .attr("height",500)
+        .style("border",'1px solid red');
+
+        let rechtangle = svg.append("rect")
+                        .attr("height",100)
+                        .attr("width",100)
+                        .attr("x",10)
+                        .attr("y",10)
+                        .style("border",'1px solid red');
+        let circle = svg.append("circle")
+                        .attr("cx",100)
+                        .attr("cy",100)
+                        .attr("r",40)
+                        .style("border",'1px solid red');   
+        let elipse= svg.append("ellipse")
+                        .attr("cx",200)
+                        .attr('cy',400)      
+                        .attr('rx',40)
+                        .attr('ry',90)    
+        let text = svg.append("text")
+                       .attr('x','250')
+                       .attr('y','300')
+                       .attr('stroke','#fff')
+                       .text("Good Morning Friends");                  
+
+
+
+
+    </script>
+    
+</body>
+</html>

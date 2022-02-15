@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://d3js.org/d3.v7.min.js'></script>
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+let titaniccsv = 'https://raw.githubusercontent.com/dsindy/kaggle-titanic/master/data/test.csv';
+/*
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+892,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,,Q
+893,3,"Wilkes, Mrs. James (Ellen Needs)",female,47,1,0,363272,7,,S
+894,2,"Myles, Mr. Thomas Francis",male,62,0,0,240276,9.6875,,Q
+895,3,"Wirz, Mr. Albert",male,27,0,0,315154,8.6625,,S
+*/
+ let values = d3.csv(titaniccsv, function(data) {
+
+   return data
+      
+});
+values.then((value)=> {
+   
+    let mrsandmrs = value.filter((d)=> {
+         if(d.Name.includes("Mr.") || d.Name.includes("Mrs."))
+        {
+            return d;
+        }
+    });
+
+    let personwithPrefix = value.filter((d)=> {
+         if(d.Name.includes("."))
+        {
+            return d;
+        }
+    });
+
+    let males = value.filter((d)=> {
+         if(d.Sex==="male")
+        {
+            return d;
+        }
+    });
+
+    let females = value.filter((d)=> {
+         if(d.Sex==="female")
+        {
+            return d;
+        }
+    });
+
+    
+    
+    console.log(mrsandmrs);
+    console.log(personwithPrefix);
+    console.log(males);
+    console.log(females);
+});
+
+
+
+</script>
+    
+</body>
+</html>

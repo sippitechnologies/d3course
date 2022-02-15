@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/d3_7.js"></script>
+    <title>Document</title>
+    <style>
+          svg rect {
+        fill:red;
+    }
+    svg text{
+        fill:white;
+        font:10px sans-serif;
+        text-anchor: end;
+    }
+    </style>
+</head>
+<body>
+    
+    <script>
+        let heartfailurecsv = 'https://raw.githubusercontent.com/akmand/datasets/master/heart_failure.csv';
+        let records = d3.csv(heartfailurecsv,function(data){
+            return  data;
+        });
+    
+        records.then((patients)=>{
+                console.log("Total Patients",patients.length);
+                let peoplebetween1to30 = patients.filter((value)=> {
+                    if(value.age>=1 && value.age<=30)
+                    {
+                        return value;
+                    }});
+                    patients.forEach(element => {
+                        console.log(element);
+                    });
+                    let peoplebetween31to40 = patients.filter((value)=> {
+                    if(value.age>=31 && value.age<=40)
+                    {
+                        return value;
+                    }});
+                    let peoplebetween41to60 = patients.filter((value)=> {
+                    if(value.age>=41 && value.age<=60)
+                    {
+                        return value;
+                    }});
+                    let peoplebetween61to100 = patients.filter((value)=> {
+                    if(value.age>=61 && value.age<=100)
+                    {
+                        return value;
+                    }});
+              
+
+                // let data = [`Total Patients ${patients.length}`,
+                // `People between 0 to 30 ${peoplebetween1to30.length}`,
+                // `People between 31 to 40 ${peoplebetween31to40.length}`,
+                // `People between 41 to 60 ${peoplebetween41to60.length}`,
+                // `People between 61 to 100 ${peoplebetween61to100.length}`
+                // ];
+
+
+                let data = [
+               peoplebetween1to30.length,
+               peoplebetween31to40.length,
+               peoplebetween41to60.length,
+               peoplebetween61to100.length
+                ];
+                
+
+
+
+               
+        var width = 200;
+        var scaleFactor = 10;
+        var barHeight = 20;
+        var graph = d3.select("body")
+         .append("svg")
+         .attr("width", width)
+         .attr("height", barHeight * data.length);
+        var bar = graph.selectAll("g")
+         .data(data)
+         .enter()
+         .append("g")
+         .attr("transform", function(d, i) {
+         return "translate(0," + i * barHeight + ")";
+         });
+        bar.append("rect")
+         .attr("width", function(d) {
+         return d * scaleFactor;
+         })
+         .attr("height", barHeight - 1);
+        bar.append("text")
+         .attr("x", function(d) { return (d*scaleFactor); })
+         .attr("y", barHeight / 2)
+         .attr("dy", ".35em")
+         .text(function(d) { return d; })
+         
+        
+          });
+    </script>
+</body>
+</html

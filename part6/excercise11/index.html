@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/d3_7.js"></script>
+    <title>SVG</title>
+</head>
+<body>
+    <script>
+        d3.select("body")
+        .append("svg")
+        .attr("width",500)
+        .attr("height",500)
+        .style("border",'1px solid green')
+        .append("line")
+        .attr('x1',0)
+        .attr('x2',200)
+        .attr('y1',0)
+        .attr('y2',0)
+        .attr('stroke','blue');
+    </script>
+    
+</body>
+</html>

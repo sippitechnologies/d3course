@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise 12</title>
+    <script src="js/d3_7.js"></script>
+</head>
+<body>
+ 
+    <script>
+
+ let body = d3.select("body");
+       
+        for(let i=1;i<10;i++)
+        {
+            body.append("svg")
+            .attr("width",10*i)
+            .attr('height',10*i)
+            .style('border','1px solid red');
+        }
+    
+    let dataFile = "./data/assignment13.csv";
+    
+    
+    let values = d3.csv(dataFile,(data)=>{
+        return   data;
+    });
+
+
+ 
+    let getData = async()=>{
+        let dataValues = await values;
+        
+        body
+        .selectAll("svg")
+        .data(dataValues)
+        .enter()
+        .append("svg")
+        .attr("width",(v)=>v.Width)
+        .attr('height',(v)=>v.Height)
+        .style('border','1px solid red')
+        // .attr("width",function(d) {return  d.Width})
+        // .attr("height",(b)=> b.Height)
+       
+        
+       
+
+    }
+
+    let getDataWithExit = async()=>{
+        let dataValues = await values;
+        
+        body
+        .selectAll("svg")
+        .data(dataValues)
+        .attr('width',(d)=>d.Width)
+        .attr('height',(d)=>d.Height)
+        .exit()
+        .remove();
+        // .attr("width",function(d) {return  d.Width})
+        // .attr("height",(b)=> b.Height)
+       
+        
+       
+
+    }
+    getDataWithExit();
+   
+    
+    
+
+
+    </script>
+</body>
+</html>
