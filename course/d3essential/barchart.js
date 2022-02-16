@@ -1,4 +1,4 @@
-let numbers = [5,10,25,30];
+let numbers = [5,10,15];
 let newX=300;
 let svg = d3.select("body")
             .append("svg")
@@ -30,5 +30,15 @@ let svg = d3.select("body")
          .attr("cx",(d,i)=>newX+=(d*6)+(i*20))
          .attr("cy","100")
          .attr("r",(d)=>d);
+
+         let newXForEllipse=600;
+         svg.selectAll("ellipse")
+         .data(numbers)
+         .enter()
+         .append("ellipse")
+         .attr("cx",(d,i)=>newXForEllipse+=(d*6)+(i*20))
+         .attr("cy","100")
+         .attr("rx",(d)=>d)
+         .attr('ry',(d)=>d*2);
 
 //Terms anti selection in d3
