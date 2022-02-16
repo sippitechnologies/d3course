@@ -48,7 +48,14 @@ let svg = d3.select("body")
          .append("line")
          .attr("x1",newXForLine)
          .attr("y1",(d)=>d*5)
+         //.attr("stroke",'red')  /*While attribute and style used to togeter style get change to execute same case with css and attribute*/
+         .style("stroke",'pink') //Inline get chance to execute over css rule inline-style-attribute
          .attr("x2",newXForLine*2)
-         .attr('y2',(d)=>d*2);
+         .attr('y2',(d)=>d*5);
 
+
+         svg.append('text')
+         .attr('x',newXForLine)
+         .attr('y',"200")
+         .text("Hello World");
 //Terms anti selection in d3
