@@ -41,4 +41,14 @@ let svg = d3.select("body")
          .attr("rx",(d)=>d)
          .attr('ry',(d)=>d*2);
 
+         let newXForLine=900;
+         svg.selectAll("line")
+         .data(numbers)
+         .enter()
+         .append("line")
+         .attr("x1",newXForLine)
+         .attr("y1",(d)=>d*5)
+         .attr("x2",newXForLine*2)
+         .attr('y2',(d)=>d*2);
+
 //Terms anti selection in d3
