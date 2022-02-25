@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 9</title>
+    <script src='https://d3js.org/d3.v7.min.js'></script>
+</head>
+<body>
+    
+
+   
+<script>
+var data = [0,10,20,50,60,1000];
+var scale= d3.scaleLinear()
+             .domain([d3.min(data),d3.max(data)])
+             .range([0,10]);
+             console.log("Scale 0",scale(0));
+             console.log("Scale 10",scale(1000));
+             console.log("Scale for 20",scale(200));
+</script>
+</body>
+</html>

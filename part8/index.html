@@ -9,8 +9,8 @@
 </head>
 <body>
     <script>
-        const width = 500;
-        const height = 500;
+        const width = "100%";
+        const height = "100%";
         const data = [10, 15, 20, 25, 30];
         // Note different valid ways of specifying color
         const colors = ['#ffffcc','red','rgb(0,255,0)','#31a354','#006837'];
@@ -25,6 +25,23 @@
          .attr("transform", function(d, i) {
          return "translate(0,0)";
          })
+         g.append("rect")
+         .attr("width",(d)=>d*5)
+         .attr('x',(d,i)=>i*200+50)
+         .attr('y',"100")
+         .attr("height",(d)=>d*5)
+         .attr("fill","blue");
+         g.append("text")
+        .attr("x", function(d, i) {
+         return i * 100 + 40;
+        })
+        .attr("y", 105)
+        .attr("stroke", "teal")
+        .attr("font-size", "12px")
+        .attr("font-family", "sans-serif")
+        .text(function(d) {
+         return d;
+        });
         g.append("circle")
          .attr("cx", function(d, i) {
          return i*100 + 50;

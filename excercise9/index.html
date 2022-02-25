@@ -26,7 +26,7 @@ PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
 });
 values.then((value)=> {
    
-    let mrsandmrs = value.filter((d)=> {
+    let mrsandmrs = value.filter( function (d) {
          if(d.Name.includes("Mr.") || d.Name.includes("Mrs."))
         {
             return d;

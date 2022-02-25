@@ -11,17 +11,19 @@
     <script>
     
     let dataFile = "./data/assignment12.csv";
-    let body = ()=> d3.select("body");
-    let svg = ()=> {
-        return body().append("svg")
+    let body =  d3.select("body");
+    let svg = body.append("svg")
                          .attr("width",700)
                          .attr("height",700)
                          .style('border','1px solid blue')
-    }
+
+    
+
+    
     let values = d3.csv(dataFile,function(data){
         return data;
     });
-    let mySvg = svg();
+    let mySvg = svg;
     values.then((value)=>{
         value.forEach(element => {
            switch(element.Shape)
