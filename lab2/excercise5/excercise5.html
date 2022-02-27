@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part3</title>
+    <script type='text/javascript' src='https://d3js.org/d3.v7.min.js'></script>
+</head>
+<body>
+    
+
+    <script>
+        d3.select('body')
+        .append('svg')
+        .style('width', '100%')
+        .style('height', '100%')
+        .style("border","1px solid black")
+        d3.selectAll("svg")
+        .append("text")
+        .attr("x","100")
+        .attr("y","100")
+        .text("Good Morning")
+        .on("mouseover", function(event){
+        d3.select(this)
+       
+        
+        // Get current event info
+ // Note: d3.event (event) passed as the first argument to all listeners
+ console.log(event);
+ // Get x & y co-ordinates
+ // Note: d3.mouse was removed in d3v6, you should use d3.pointer(event)
+ console.log("Pointer",d3.pointer(event));
+ });
+</script>
+</body>
+</html>
