@@ -24,6 +24,9 @@
         .attr("r","20")
         .on("mouseover", function(event){
         d3.select(this)
+        .transition()
+        .ease(d3.easeBounce)
+        .duration(2000)
         .attr("r","40")
         .attr("fill","orange")
         
@@ -37,6 +40,9 @@
  })
  .on("mouseout", function(){
  d3.select(this)
+ .transition()
+ .ease(d3.easeBounce)
+ .duration(2000)
  .attr("r","20")
  .attr("fill","green")
  });
