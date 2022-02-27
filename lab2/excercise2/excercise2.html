@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise 2</title>
+    <script src="d3_7.js"></script>
+    <style>
+        div {
+         position: relative;
+         background-color: yellow;
+         padding: 20px;
+         display: none;
+        } 
+        p:hover + div {
+         position: absolute;
+         display: inline-block;
+        }
+        </style>
+</head>
+<body>
+    <script>
+    let data = [{name:"one",discription:"description One"}
+    ,{name:"one",discription:"description One"}
+    
+    ];
+
+    d3.select('body')
+      .selectAll("p")
+      .data(data)
+      .enter()
+      .append("p")
+      .text((d)=>d.discription)
+
+      d3.select('body')
+      .selectAll("div")
+      .data(data)
+      .enter()
+      .append("div")
+      .text((d)=>d.discription)
+      
+</script>
+    
+</body>
+</html>
