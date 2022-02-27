@@ -12,21 +12,22 @@
 
     <script>
         d3.select('body')
-        .append('div')
+        .append('svg')
         .text("hello")
-        .style('width', '100px')
-        .style('height', '20px')
-        .style('font-size',"20px")
-        .style('background-color', 'green')
+        .style('width', '100%')
+        .style('height', '100%')
         .style("border","1px solid black")
-        d3.selectAll("div")
+        d3.selectAll("svg")
+        .append("circle")
+        .attr("fill","green")
+        .attr("cx","100")
+        .attr("cy","100")
+        .attr("r","20")
         .on("mouseover", function(event){
         d3.select(this)
-        .style("background-color", "orange")
-        .style("border","1px solid red")
-        .style("font-size","40px")
-        .style('width', '200px')
-        .style('height', '40px')
+        .attr("r","40")
+        .attr("fill","orange")
+        
         
         // Get current event info
  // Note: d3.event (event) passed as the first argument to all listeners
@@ -37,11 +38,8 @@
  })
  .on("mouseout", function(){
  d3.select(this)
- .style('width', '200px')
- .style('height', '60px')
- .style("background-color", "steelblue")
- .style("border","1px solid blue")
- .style("font-size","50px")
+ .attr("r","20")
+ .attr("fill","green")
  });
 </script>
 </body>
