@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise 11</title>
+    <script src="d3_7.js"></script>
+</head>
+<body>
+    <script>
+    let body = d3.select("body");
+    let svg =  body.append("svg")
+                .attr("width","100%")
+                .attr('height',"100%")
+                .style('border',"1px solid red");
+    let text = svg.append("text")
+                  .text("Hello")
+                  .attr('x',"100")
+                  .attr('y',"100") 
+                  .attr('font-size',"20")
+                  .style("stroke","red")
+                  svg.on('mouseover',(event)=>{
+                    text.attr('x',"200")
+                  .attr('y',"100") 
+                  .attr('font-size',"100")
+                  .style("stroke","red")
+                  })
+                  svg.on('mouseout',(event)=>{
+                   text.attr('x',"100")
+                  .attr('y',"100") 
+                  .attr('font-size',"20")
+                  .style("stroke","red")
+                  })
+                             
+
+
+</script>
+
+</body>
+</html>
