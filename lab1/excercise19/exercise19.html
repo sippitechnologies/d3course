@@ -10,23 +10,28 @@
 <body>
 <script>
   let csvFile = "./data/citiespopulation.csv";
+  let csvFile1 = "./data/citiespopulation1.csv";
 
-let values = d3.csv(csvFile,function(data){
-  return data;
-});
-
-console.log(values);
 
 
 const width = 500;
 const barHeight = 20;
 const margin = 1;
+let body=d3.select("body");
+
+
+let addSvg=(csvFile)=>
+{
+  let values = d3.csv(csvFile,function(data){
+  return data;
+});
+
+console.log(values);
 values.then((data)=>{
   var scale = d3.scaleLinear()
  .domain([d3.min(data,d=>d.price), d3.max(data,d=>d.price)])
  .range([50, 500]);
-var svg = d3.select("body")
- .append("svg")
+var svg = body.append("svg")
  .attr("width", width)
  .attr("height", barHeight * data.length);
 var g = svg.selectAll("g")
@@ -50,9 +55,9 @@ g.append("text")
  .text(function (d) { return d.price; });
 
 })
-
-
-
+}
+addSvg(csvFile)
+addSvg(csvFile1)
 </script>
 </body>
 </html>
