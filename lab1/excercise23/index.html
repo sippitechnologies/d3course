@@ -17,17 +17,16 @@ const xMax = xSize - margin*2;
 const yMax = ySize - margin*2;
 // Create Random Points
 const numPoints = 100;
-const data = [];
+
 let body = d3.select("body");
 
 let createGraph=(linetype)=>
 {
-    for (let i = 0; i < numPoints; i++) { data.push( {x: i/100, y: Math.sin( 6.2 * i/100 ) } ); }
-// Get the 'limits' of the data - the full extent (mins and max)
-// so the plotted data fits perfectly 
-console.log("Data",data); 
-const xExtent = d3.extent( data, d=>{ return d.x } );
-const yExtent = d3.extent( data, d=>{ return d.y } );
+let values = d3.csv("./data/points.csv",(data)=>data);
+
+values.then((data)=>{
+    const xExtent = d3.extent( data, d=>{ return d.x/100 } );
+const yExtent = d3.extent( data, d=>{ return Math.sin( 6.2 * d.y/100 ) } );
 // Append SVG Object to the Page
 const svg = body
  .append("svg")
@@ -65,9 +64,17 @@ svg.append("path")
  .attr("stroke", "steelblue")
  .attr("stroke-width", 1.5)
  .attr("d", d3.line()
- .x(function(d) { return x(d.x) })
- .y(function(d) { return y(d.y) }).curve(linetype)
+ .x(function(d) { return x(d.x/100) })
+ .y(function(d) { return y(Math.sin( 6.2 * d.y/100 )) }).curve(linetype)
  );
+
+})
+
+
+    
+// Get the 'limits' of the data - the full extent (mins and max)
+// so the plotted data fits perfectly 
+
 }
 /*
 curveCardinal
